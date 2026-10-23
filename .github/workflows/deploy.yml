@@ -1,0 +1,22 @@
+name: Deploy
+
+on:
+  workflow_dispatch:
+
+jobs:
+  staging:
+    runs-on: ubuntu-latest
+    environment: staging
+    steps:
+      - run: echo "Deploying to ${{ vars.TARGET_NAME }} with key $DEPLOY_KEY"
+        env:
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+
+  production:
+    needs: staging
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - run: echo "Deploying to ${{ vars.TARGET_NAME }} with key $DEPLOY_KEY"
+        env:
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
