@@ -1,1 +1,1 @@
-document.querySelector('#built').textContent = 'Version 2: built by Vite'
+document.querySelector('#built').textContent = 'Version 3: checked on a pull request'
